@@ -1,26 +1,31 @@
-# CTGS
-Imagine this is a paragraph telling you something about the project. To help you imagine this is a paragraph, I have to write more than one sentence. However, I think two sentences are not enought to imagine that this is a paragraph, so I just added this third sentence. Now, if you coudn't imagine that this is a paragraph, then sorry, I cannot help your imagination.
+# Ctgs
 
-## Dependencies
-- You must have `node` and `npm` installed (via `brew install node` or [NodeJS.org](https://nodejs.org/en/));
-- You must also have `typings` installed globally via `npm i -g typings`
-- Be sure that you have `typings` version `1.x`
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21.
 
-## Getting Started
+## Development server
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Code scaffolding
 
-```bash
-git clone https://github.com/almawhoob/ctgs.git
-cd ctgs
-npm install
-typings install
-npm start
-```
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class`.
 
-Then navigate your browser to [http://localhost:3001](http://localhost:3001) and use the app.
+## Build
 
-## Testing
-The test setup includes `webpack.test.config.js`, `spec-bundle.js`, and `karma.conf.js`. To run unit tests, execute `npm test` in your terminal.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## References
-* Get Started with Angular 2 by Building a Simple Website: http://onehungrymind.com/build-a-simple-website-with-angular-2/
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app via `ng serve`.
+
+## Deploying to Github Pages
+
+Run `ng github-pages:deploy` to deploy to Github Pages.
+
+## Further help
+
+To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
