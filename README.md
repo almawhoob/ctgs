@@ -21,3 +21,6 @@ Then navigate your browser to [http://localhost:3001](http://localhost:3001) and
 
 ## Testing
 The test setup includes `webpack.test.config.js`, `spec-bundle.js`, and `karma.conf.js`. To run unit tests, execute `npm test` in your terminal.
+
+## References
+* Get Started with Angular 2 by Building a Simple Website: http://onehungrymind.com/build-a-simple-website-with-angular-2/
