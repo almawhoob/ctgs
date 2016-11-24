@@ -1,5 +1,5 @@
-# Building an Angular 2 Website Using Routes
-This is a simple Angular 2 website using the brand new router. It demonstrates how to build components, configure routes, inject services, and use the `@Input` decorator to bind properties to components.
+# CTGS
+Imagine this is a paragraph telling you something about the project. To help you imagine this is a paragraph, I have to write more than one sentence. However, I think two sentences are not enought to imagine that this is a paragraph, so I just added this third sentence. Now, if you coudn't imagine that this is a paragraph, then sorry, I cannot help your imagination.
 
 ## Dependencies
 - You must have `node` and `npm` installed (via `brew install node` or [NodeJS.org](https://nodejs.org/en/));
@@ -10,9 +10,9 @@ This is a simple Angular 2 website using the brand new router. It demonstrates h
 
 
 ```bash
-git clone https://github.com/simpulton/angular2-website-routes.git
-cd angular2-website-routes
-npm i
+git clone https://github.com/almawhoob/ctgs.git
+cd ctgs
+npm install
 typings install
 npm start
 ```
