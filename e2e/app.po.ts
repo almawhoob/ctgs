@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class CtgsPage {
+export class PrincePage {
   navigateTo() {
     return browser.get('/');
   }

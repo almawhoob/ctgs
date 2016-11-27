@@ -1,10 +1,10 @@
-import { CtgsPage } from './app.po';
+import { PrincePage } from './app.po';
 
-describe('ctgs App', function() {
-  let page: CtgsPage;
+describe('prince App', function() {
+  let page: PrincePage;
 
   beforeEach(() => {
-    page = new CtgsPage();
+    page = new PrincePage();
   });
 
   it('should display message saying app works', () => {
