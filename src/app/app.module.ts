@@ -19,13 +19,13 @@ var config = {
 };
 
 const appRoutes: Routes = [
-  { path: 'application', component: HomeComponent },
-  { path: 'home', component: LoginComponent }
+  { path: 'home', component: HomeComponent },
+  { path: '', component: LoginComponent }
 ];
 
 const authConfig = {
-  provider: AuthProviders.Google,
-  method: AuthMethods.Redirect
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
 }
 
 @NgModule({

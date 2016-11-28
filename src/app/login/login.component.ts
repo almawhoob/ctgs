@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
-import {AngularFire} from "angularfire2";
+import {AngularFire, AuthMethods, AuthProviders} from "angularfire2";
 
 @Component({
   selector: 'login',
@@ -8,16 +8,16 @@ import {AngularFire} from "angularfire2";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent{
-
-  title = 'CTGS';
-  // items : FirebaseListObservable<any[]>;
-  constructor(private router:Router, private af: AngularFire){
-    // this.items = af.database.list('/items');
-  }
+  userEmail="";
+  userPassword="";
+  title:string = 'CTGS';
+  constructor(private router:Router, private af: AngularFire){}
 
   login() {
+    console.log(this.userEmail);
+    console.log(this.userPassword);
     if (this.af.auth.login()) {
-      this.router.navigateByUrl('application');
+      this.router.navigateByUrl('home');
     }
   }
 

@@ -1,11 +1,10 @@
 <div class="login-page">
   <div class="form">
     <h1>{{title}}</h1>
-    <form class="login-form">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <div> {{ (af.auth | async)?.uid }} </div>
-      <button (click)="login()">Login</button>
+    <form  class="login-form" (ngSubmit)="login()">
+      <input  type="email" name="uname" placeholder="username" [(ngModel)] = "userEmail"/>
+      <input  type="password" name="pwd" placeholder="password" [(ngModel)] = "userPassword"/>
+      <button type="submit">Login</button>
     </form>
   </div>
 </div>
