@@ -1,10 +1,11 @@
 <div class="login-page">
   <div class="form">
     <h1>{{title}}</h1>
-    <form  class="login-form" (ngSubmit)="login()">
-      <input  type="email" name="uname" placeholder="username" [(ngModel)] = "userEmail"/>
-      <input  type="password" name="pwd" placeholder="password" [(ngModel)] = "userPassword"/>
-      <button type="submit">Login</button>
+    <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'login(formdata)'>
+          <input type="text" name="email" (ngModel)="email" requred>
+
+          <input type="password" name="password" (ngModel)="password" required>
+      <button type="submit" [disabled]="!formdata.valid">Submit</button>
     </form>
   </div>
 </div>

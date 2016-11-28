@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {HttpModule, JsonpModule} from '@angular/http';
 import { AngularFireModule, AuthMethods, AuthProviders } from 'angularfire2';
-import {RouterModule, Routes} from '@angular/router'
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import {AppRouting} from "./app.routing";
 
 // Initialize Firebase
 var config = {
@@ -17,11 +17,6 @@ var config = {
   storageBucket: "ctgs-ea771.appspot.com",
   messagingSenderId: "80411482803"
 };
-
-const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: '', component: LoginComponent }
-];
 
 const authConfig = {
   provider: AuthProviders.Password,
@@ -38,7 +33,8 @@ const authConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes),
+    JsonpModule,
+    AppRouting,
     AngularFireModule.initializeApp(config, authConfig)
   ],
   providers: [],

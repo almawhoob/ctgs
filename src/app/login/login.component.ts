@@ -1,24 +1,32 @@
 import {Component} from '@angular/core';
+import {AngularFire} from "angularfire2";
 import {Router} from "@angular/router";
-import {AngularFire, AuthMethods, AuthProviders} from "angularfire2";
 
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent{
-  userEmail="";
-  userPassword="";
-  title:string = 'CTGS';
-  constructor(private router:Router, private af: AngularFire){}
+export class LoginComponent  {
+  title = "CTGS";
+  constructor(private af: AngularFire, private router: Router) { }
 
-  login() {
-    console.log(this.userEmail);
-    console.log(this.userPassword);
-    if (this.af.auth.login()) {
-      this.router.navigateByUrl('home');
+  login(formData){
+    if(formData.valid) {
+      console.log(formData.value);
+      this.af.auth.login({
+        email: formData.value.email,
+        password: formData.value.password
+      }).then(
+        (success) => {
+          console.log(success);
+          this.router.navigateByUrl('home');
+        }).catch(
+        (err) => {
+          console.log(err);
+        })
+    }else {
+      console.log("Invalid Form Entry");
     }
   }
-
 }
