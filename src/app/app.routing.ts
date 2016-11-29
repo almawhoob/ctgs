@@ -9,7 +9,7 @@ import { LoginGuard } from "./login/login-guard.service"
 import {HomeComponent} from "./home/home.component";
 
 const appRoutes: Routes = [
-  {path: '', component: LoginComponent},
+  {path: '', component: HomeComponent, canActivate: [LoginGuard]},
   {path: 'home', component: HomeComponent, canActivate: [LoginGuard]},
   {path: 'login', component: LoginComponent }
 ];

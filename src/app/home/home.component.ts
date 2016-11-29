@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AngularFire} from "angularfire2";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'home',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private af: AngularFire, private router:Router) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.af.auth.logout();
+    this.router.navigate(['/login']);
   }
 
 }
