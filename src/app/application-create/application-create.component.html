@@ -1,0 +1,66 @@
+<div class="apply-page">
+  <div class="form">
+    <h1>{{title}}</h1>
+    <p>If you are planning on presenting a publication directly related to your thesis at a conference,
+      you may be eligible for a travel grant. Eligible students include Master’s with thesis option students;
+      doctoral students and students enrolled in a “fast-track” program. Consult the relevant section below for more
+      details on eligibility criteria.</p>
+
+    <p>Value: Up to $550 </p>
+    <p>Deadline: Prior to leaving</p>
+
+    <h2>Objectives</h2>
+    <p>The Faculty of Graduate and Postdoctoral Studies (FGPS) recognizes the importance of sharing the research findings of master's with thesis students with the broader scientific community. To this end, the FGPS awards travel grants to these individuals so that they can present the results of their research closely related to the thesis at major conferences. The program also provides an opportunity to exchange with other researchers in one's field.</p>
+
+    <h2>Eligibility</h2>
+    <p>Master's with thesis students applying for a conference travel grant must:</p>
+
+    <ul>
+      <li>Be registered full time in a thesis program at the time of the conference;</li>
+      <li>Present their research at the conference within the first six sessions from their initial registration in the Master's program.</li>
+    </ul>
+
+    <h2>Conditions</h2>
+    <ul>
+    <li>A student can only be awarded one grant through the completion of their program;
+      <li>This grant can only be used to cover the cost of transportation (train, plane, bus, taxi, kilometers or other), and at the most economical rate possible. No other travel expenses are eligible;</li>
+      <li>The maximum amount awarded varies according to the conference location (see the map);</li>
+      <li>Conferences taking place in the Ottawa-Gatineau area are not eligible;</li>
+      <li>For students who are not departing from Ottawa to attend the conference (e.g. exchange, internship, mobility, or in cotutelle at a host institution), the maximum amount awarded varies according to the distance travelled from the location of the host institution (see map);</li>
+      <li>The publication and presentation must deal with research results obtained during the current program and be related to the thesis;</li>
+      <li>The applicant must be the first author (as listed on the official publication or conference documents) and the presenter;</li>
+      <li>The applicant must obtain a financial contribution for the trip (a minimum of $100 is required) from their academic unit or supervisor.</li>
+    </ul>
+
+    <h2>Deadline</h2>
+    <ul>
+      <li>All applications must be submitted before the first day (official date ) of the conference. No application will be considered eligible if received at the FGPS after the beginning of the conference. It is recommended to submit the complete application 30 days prior to the conference in order to receive a decision prior to departure.</li>
+      <li>Only complete applications will be processed. It is the sole responsibility of the student to ensure that all the required documentation, confirmation of financial contribution, and all signatures are provided with the application. No documentation or approval will be accepted after the application is submitted to the FGPS. Incomplete applications will be rejected.</li>
+      <li>Students can submit only one application per publication and per conference. Resubmission of a previously rejected incomplete application is not permitted.</li>
+    </ul>
+
+    <h2>Procedure</h2>
+    <ul>
+    <li>Submit the complete and signed application form and all supporting documents to the FGPS, Hagen Hall, 115 Séraphin-Marion Street (room 107), Ottawa, ON K1N 6N5. You can also submit your application by email by sending clearly scanned documents to grad.awards@uottawa.ca
+      <li>Wait for the acceptance or refusal letter from the FGPS (copies will also be sent to the academic unit, the supervisor, Human Resources Service and the GSAED).</li>
+      <li>Within 90 days after the end of  the conference, complete the Request for reimbursement of travel expenses form (.xls) and return it, along with original receipts (including boarding passes) and a proof of attendance at the conference, to the FGPS. Include a proof of exchange rates used if appropriate. Claims submitted later than 90 days after the conference will not be processed and the travel grant will be forfeited.</li>
+      <li>A cheque will be issued and sent by mail to the applicant. The amount awarded is the lowest between:</li>
+    <ul>
+      <li>the actual cost of the transportation and;</li>
+      <li>the amount appearing on the FGPS' geographic map.</li>
+    </ul>
+      <li>Supporting documents to be submitted with the application (prior to the conference)</li>
+      <li>A complete and signed application form with confirmed financial contribution and a detailed recommendation from the supervisor;</li>
+      <li>An abstract of the publication to be presented;</li>
+      <li>A formal indication of the list  of authors (cover page of publication or extract from the conference documentation or exchanges with the conference organizers that evidence the relevant publication and the list of authors);</li>
+      <li>A written proof that the publication has been accepted for presentation at the conference (issue by the conference organizers);</li>
+    </ul>
+
+    <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'login(formdata)'>
+      <input type="text" name="name" (ngModel)="name" requred placeholder="Full Name">
+
+      <textarea type="text" name="notes" (ngModel)="notes" required placeholder="Notes"></textarea>
+      <button type="submit" [disabled]="!formdata.valid">I read the conditions and I accept them.</button>
+    </form>
+  </div>
+</div>

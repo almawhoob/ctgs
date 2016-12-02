@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import {AppRouting} from "./app.routing";
 import {LoginGuard} from "./login/login-guard.service";
+import { RecommendationComponent } from './recommendation/recommendation.component';
+import { ApplicationCreateComponent } from './application-create/application-create.component';
 
 // Initialize Firebase
 var config = {
@@ -28,7 +30,9 @@ const authConfig = {
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    RecommendationComponent,
+    ApplicationCreateComponent
   ],
   imports: [
     BrowserModule,

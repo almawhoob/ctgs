@@ -1,0 +1,15 @@
+<div class="rec-page">
+  <div class="form">
+    <h1>{{title}}</h1>
+    <p>Application ID: 127738</p>
+    <p>Applicant: Ahmed Al abdulmohsen</p>
+    <p>School: University of Ottawa - Faculty of Engineering - Software Engineering</p>
+
+    <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'login(formdata)'>
+      <input type="text" name="name" (ngModel)="name" requred placeholder="Full Name">
+
+      <textarea type="text" name="notes" (ngModel)="notes" required placeholder="Notes"></textarea>
+      <button type="submit" [disabled]="!formdata.valid">Submit</button>
+    </form>
+  </div>
+</div>
