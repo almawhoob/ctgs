@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
 import { AngularFireModule, AuthMethods, AuthProviders } from 'angularfire2';
+import { MaterialModule } from '@angular/material';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -40,6 +42,7 @@ const authConfig = {
     HttpModule,
     JsonpModule,
     AppRouting,
+    MaterialModule.forRoot(),
     AngularFireModule.initializeApp(config, authConfig)
   ],
   providers: [LoginGuard],

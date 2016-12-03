@@ -1,6 +1,9 @@
 <div class="apply-page">
-  <div class="form">
+  <div class="form" *ngIf="!acceptedConditions">
     <h1>{{title}}</h1>
+
+
+
     <p>If you are planning on presenting a publication directly related to your thesis at a conference,
       you may be eligible for a travel grant. Eligible students include Master’s with thesis option students;
       doctoral students and students enrolled in a “fast-track” program. Consult the relevant section below for more
@@ -56,11 +59,156 @@
       <li>A written proof that the publication has been accepted for presentation at the conference (issue by the conference organizers);</li>
     </ul>
 
-    <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'login(formdata)'>
-      <input type="text" name="name" (ngModel)="name" requred placeholder="Full Name">
+    <!--<form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'acceptTheConditions()'>-->
+      <!--<input type="text" name="name" (ngModel)="name" requred placeholder="Full Name">-->
 
-      <textarea type="text" name="notes" (ngModel)="notes" required placeholder="Notes"></textarea>
-      <button type="submit" [disabled]="!formdata.valid">I read the conditions and I accept them.</button>
-    </form>
+      <!--<textarea type="text" name="notes" (ngModel)="notes" required placeholder="Notes"></textarea>-->
+      <button type="button" (click)="acceptTheConditions()">I read the conditions and I accept them.</button>
+    <!--</form>-->
   </div>
+</div>
+
+
+<div class="form" *ngIf="acceptedConditions">
+FORM 2
+
+  <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'acceptTheConditions()'>
+
+
+    <md-grid-list cols="4" rowHeight="2em" gutterSize="10px" style="padding-bottom: 10px;">
+      <md-grid-tile [colspan]="4"><h2>Conference Information</h2></md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        Name of Conference
+      </md-grid-tile>
+      <md-grid-tile [colspan]="3" [rowspan]="1">
+        <input type="text" id="conferenceName" placeholder="Name of Conference being attended" [(ngModel)]="formdata.conferenceName">
+      </md-grid-tile>
+
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        Conference Location
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        <input type="text" id="conferenceCity" placeholder="City" [(ngModel)]="formdata.conferenceCity">
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        <input type="text" id="conferenceProvince" placeholder="Province/State" [(ngModel)]="formdata.conferenceProvince">
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        <input type="text" id="conferenceCountry" placeholder="Country" [(ngModel)]="formdata.conferenceCountry">
+      </md-grid-tile>
+    </md-grid-list>
+
+    <md-grid-list cols="5" rowHeight="2em" gutterSize="10px">
+      <md-grid-tile>
+        Conference Duration
+      </md-grid-tile>
+
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        From
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="1" >
+        <input type="text" id="conferenceStartDate" placeholder="YYYYMMDD" [(ngModel)]="formdata.conferenceStartDate">
+      </md-grid-tile>
+
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        To
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        <input type="text" id="conferenceEndDate" placeholder="YYYYMMDD" [(ngModel)]="formdata.conferenceEndDate">
+      </md-grid-tile>
+    </md-grid-list>
+
+    <!--  -->
+    <md-grid-list cols="4" rowHeight="2em" gutterSize="10px" style="padding-bottom: 40px">
+      <md-grid-tile [colspan]="4"></md-grid-tile>
+      <md-grid-tile [colspan]="4"><h2>Presentation Information</h2></md-grid-tile>
+      <md-grid-tile [colspan]="1">
+        Presentation Name
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1">
+        <input type="text" id="presentationName" placeholder="thunder thunder thundercats!" [(ngModel)]="formdata.presentationName">
+      </md-grid-tile>
+
+      <md-grid-tile [colspan]="1">
+        Presentation Type
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1">
+        <md-radio-group>
+          <md-radio-button value="oral" style="padding-right: 15px;" [(ngModel)]="formdata.presentationType">Oral</md-radio-button>
+          <md-radio-button value="poster" [(ngModel)]="formdata.presentationType">Poster</md-radio-button>
+        </md-radio-group>
+      </md-grid-tile>
+
+      <md-grid-tile>
+        Main Author
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1">
+        <input type="text" id="presentationAuthor" placeholder="Ahmed Abdullah Hassan Mansor Ahmed Ali Ahmed Abdulaziz Ali Al Abdulmohsen" [(ngModel)]="formdata.mainAuthor">
+      </md-grid-tile>
+      <!--<md-grid-tile [rowspan]="2"></md-grid-tile>-->
+      <md-grid-tile>Co-Authors</md-grid-tile>
+      <md-grid-tile [colspan]="1">
+        <input type="text" id="presentationCoauthors" placeholder="Jane Doe, John Smith, Bruce Lee" [(ngModel)]="formdata.otherAuthors">
+      </md-grid-tile>
+
+
+      <md-grid-tile [colspan]="4"></md-grid-tile>
+      <md-grid-tile [colspan]="4"><h2>Estimated Expense</h2></md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        Registration Fees
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        <input type="text" id="registrationFees" placeholder="0.00" [(ngModel)]="formdata.registrationFee">
+      </md-grid-tile>
+
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        Transportation Fees
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        <input type="text" id="transportationnFees" placeholder="0.00" [(ngModel)]="formdata.transportationFee">
+      </md-grid-tile>
+
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        Accommodation Fees
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        <input type="text" id="accomodationFees" placeholder="Enter accommodation fees" [(ngModel)]="formdata.accomodationFee">
+      </md-grid-tile>
+
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        Food Expenses
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        <input type="text" id="foodFees" placeholder="Enter food expenses" [(ngModel)]="formdata.foodFee">
+      </md-grid-tile>
+    </md-grid-list>
+
+    <md-grid-list cols="4" rowHeight="2em" gutterSize="10px">
+      <md-grid-tile [colspan]="2">
+        <button type="button" style="background: red; width: 45%" (click)="cancel()">Cancel</button>
+      </md-grid-tile>
+
+      <md-grid-tile [colspan]="1" >
+        <button type="button" style="width: 90%" (click)="save()">Save</button>
+      </md-grid-tile>
+      <md-grid-tile [colspan]="1" >
+        <button type="button" style="width: 90%" (click)="submit()">Submit</button>
+      </md-grid-tile>
+
+    </md-grid-list>
+
+
+  </form>
+
+
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <input name="first" ngModel required #first="ngModel">
+    <input name="last" ngModel>
+    <button>Submit</button>
+  </form>
+  <p>First name value: {{ first.value }}</p>
+  <p>First name valid: {{ first.valid }}</p>
+  <p>Form value: {{ f.value | json }}</p>
+  <p>Form valid: {{ f.valid }}</p>
+
 </div>

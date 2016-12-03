@@ -2,7 +2,7 @@
   <div class="form">
     <h1>{{title}}</h1>
     <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'login(formdata)'>
-          <input type="text" name="email" (ngModel)="email" requred>
+          <input type="text" name="email" (ngModel)="email" required>
 
           <input type="password" name="password" (ngModel)="password" required>
       <button type="submit" [disabled]="!formdata.valid">Submit</button>
