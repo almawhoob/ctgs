@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 export class LoginComponent  {
   title = "CTGS";
   constructor(private af: AngularFire, private router: Router) { }
-
+  loginErrorMessage ="";
   login(formData){
     if(formData.valid) {
       console.log(formData.value);
@@ -23,6 +23,7 @@ export class LoginComponent  {
           this.router.navigateByUrl('home');
         }).catch(
         (err) => {
+          this.loginErrorMessage = err.message;
           console.log(err);
         })
     }else {
