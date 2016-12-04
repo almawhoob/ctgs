@@ -30,11 +30,12 @@ export class ApplicationCreateComponent implements OnInit {
     this.acceptedConditions = !this.acceptedConditions;
   }
 
-  save(formData: any) {
+  save(formValues: any) {
     console.log("Save clicked.");
     // var applicationKey = this.db.ref().child('applications').push().key;
+    formValues["state"]="created"
 
-    this.af.database.list('applications').push(formData).then( (application) => {
+    this.af.database.list('applications').push(formValues).then( (application) => {
       this.af.database.object('applications/' + application.key). update({userID: this.currentUID, applicationID: application.key})
       console.log('Application pushed! ' + application.key)
     });
@@ -43,11 +44,19 @@ export class ApplicationCreateComponent implements OnInit {
 
   }
 
-  submit() {
+  submit(formValues: any) {
     console.log("Submit clicked.");
+    formValues["state"] = 'pendingRecommendation'
+
+    this.af.database.list('applications').push(formValues).then( (application) => {
+      this.af.database.object('applications/' + application.key). update({userID: this.currentUID, applicationID: application.key})
+      console.log('Application pushed! ' + application.key)
+    });
+
   }
 
   cancel() {
     console.log("Cancel clicked.");
+    this.acceptTheConditions();
   }
 }

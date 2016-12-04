@@ -70,9 +70,9 @@
 
 
 <div class="form" *ngIf="acceptedConditions">
-FORM 2
+<h1>Conference Travel Grant Application Form</h1>
 
-  <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'acceptTheConditions()'>
+  <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'submit(formdata.value)'>
 
     <md-grid-list cols="4" rowHeight="2em" gutterSize="10px" style="padding-bottom: 10px;">
       <md-grid-tile [colspan]="4"><h2>Conference Information</h2></md-grid-tile>
@@ -80,20 +80,20 @@ FORM 2
         Name of Conference
       </md-grid-tile>
       <md-grid-tile [colspan]="3" [rowspan]="1">
-        <input type="text" name="conferenceName" placeholder="Name of Conference being attended" ngModel>
+        <input type="text" name="conferenceName" placeholder="Name of Conference being attended" ngModel required>
       </md-grid-tile>
 
       <md-grid-tile [colspan]="1" [rowspan]="1">
         Conference Location
       </md-grid-tile>
       <md-grid-tile [colspan]="1" [rowspan]="1">
-        <input type="text" name="conferenceCity" placeholder="City" ngModel>
+        <input type="text" name="conferenceCity" placeholder="City" ngModel required>
       </md-grid-tile>
       <md-grid-tile [colspan]="1" [rowspan]="1">
-        <input type="text" name="conferenceProvince" placeholder="Province/State" ngModel>
+        <input type="text" name="conferenceProvince" placeholder="Province/State" ngModel required>
       </md-grid-tile>
       <md-grid-tile [colspan]="1" [rowspan]="1">
-        <input type="text" name="conferenceCountry" placeholder="Country" ngModel>
+        <input type="text" name="conferenceCountry" placeholder="Country" ngModel required>
       </md-grid-tile>
     </md-grid-list>
 
@@ -106,14 +106,14 @@ FORM 2
         From
       </md-grid-tile>
       <md-grid-tile [colspan]="1" [rowspan]="1" >
-        <input type="date" name="conferenceStartDate" ngModel>
+        <input type="date" name="conferenceStartDate" ngModel required>
       </md-grid-tile>
 
       <md-grid-tile [colspan]="1" [rowspan]="1">
         To
       </md-grid-tile>
       <md-grid-tile [colspan]="1" [rowspan]="1">
-        <input type="date" name="conferenceEndDate" ngModel>
+        <input type="date" name="conferenceEndDate" ngModel required>
       </md-grid-tile>
     </md-grid-list>
 
@@ -125,22 +125,22 @@ FORM 2
         Presentation Name
       </md-grid-tile>
       <md-grid-tile [colspan]="1">
-        <input type="text" name="presentationName" placeholder="thunder thunder thundercats!" ngModel>
+        <input type="text" name="presentationName" placeholder="thunder thunder thundercats!" ngModel required>
       </md-grid-tile>
 
       <md-grid-tile [colspan]="1">
         Presentation Type
       </md-grid-tile>
       <md-grid-tile [colspan]="1">
-        <input type="radio" name="presentationType" value="oral" style="padding-right: 15px" ngModel>Oral
-        <input type="radio" name="presentationType" value="poster" ngModel>Poster
+        <input type="radio" name="presentationType" value="oral" style="padding-right: 15px" ngModel required>Oral
+        <input type="radio" name="presentationType" value="poster" ngModel required>Poster
       </md-grid-tile>
 
       <md-grid-tile>
         Main Author
       </md-grid-tile>
       <md-grid-tile [colspan]="1">
-        <input type="text" name="presentationAuthor" placeholder="Ahmed Abdullah Hassan Mansor Ahmed Ali Ahmed Abdulaziz Ali Al Abdulmohsen" ngModel>
+        <input type="text" name="presentationAuthor" placeholder="Ahmed Abdullah Hassan Mansor Ahmed Ali Ahmed Abdulaziz Ali Al Abdulmohsen" ngModel required>
       </md-grid-tile>
       <!--<md-grid-tile [rowspan]="2"></md-grid-tile>-->
       <md-grid-tile>Co-Authors</md-grid-tile>
@@ -189,7 +189,7 @@ FORM 2
         <button type="button" style="width: 90%" (click)="save(formdata.value)">Save</button>
       </md-grid-tile>
       <md-grid-tile [colspan]="1" >
-        <button type="button" style="width: 90%" (click)="submit()">Submit</button>
+        <button type="submit" style="width: 90%"> Submit</button>
       </md-grid-tile>
 
     </md-grid-list>
