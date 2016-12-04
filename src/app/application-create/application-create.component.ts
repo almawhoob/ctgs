@@ -37,10 +37,15 @@ export class ApplicationCreateComponent implements OnInit {
     // var applicationKey = this.db.ref().child('applications').push().key;
     if (!this.checkDates(formData['conferenceStartDate'], formData['conferenceEndDate']))
       window.alert("End date is before the first date");
-    this.af.database.list('applications').push(formData).then( (application) => {
-      this.af.database.object('applications/' + application.key). update({userID: this.currentUID, applicationID: application.key})
-      console.log('Application pushed! ' + application.key)
-    });
+    else {
+      this.af.database.list('applications').push(formData).then((application) => {
+        this.af.database.object('applications/' + application.key).update({
+          userID: this.currentUID,
+          applicationID: application.key
+        })
+        console.log('Application pushed! ' + application.key)
+      });
+    }
     // console.log(formData);
 
   }
