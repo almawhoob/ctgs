@@ -68,7 +68,7 @@ export class ApplicationCreateComponent implements OnInit {
 
   submit(formValues: any) {
     console.log("Submit clicked.");
-    formValues["state"] = 'pendingRecommendation'
+    formValues["state"] = 'pendingRecommendation';
 
     this.af.database.list('applications').push(formValues).then( (application) => {
       this.af.database.object('applications/' + application.key). update({userID: this.currentUID, applicationID: application.key})

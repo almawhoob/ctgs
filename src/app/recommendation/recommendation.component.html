@@ -1,15 +1,194 @@
 <div class="rec-page">
   <div class="form">
     <h1>{{title}}</h1>
-    <p>Application ID: 127738</p>
-    <p>Applicant: Ahmed Al abdulmohsen</p>
-    <p>School: University of Ottawa - Faculty of Engineering - Software Engineering</p>
 
-    <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'login(formdata)'>
-      <input type="text" name="name" (ngModel)="name" requred placeholder="Full Name">
+    <!--<h2>Applicant Information</h2>-->
+    <!--<p>Application ID: {{appInfo.applicationID}}</p>-->
+    <!--<p>Applicant: {{applicantInfo?.name}}</p>-->
+    <!--<p>Conference Name: {{appInfo.conferenceName}}</p>-->
 
-      <textarea type="text" name="notes" (ngModel)="notes" required placeholder="Notes"></textarea>
-      <button type="submit" [disabled]="!formdata.valid">Submit</button>
+    <md-grid-list cols="4" rowHeight="2em" gutterSize="10px" style="padding-bottom: 10px;">
+      <md-grid-tile [colspan]="4"><h2>Applicant Information</h2></md-grid-tile>
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        Applicant
+      </md-grid-tile>
+      <md-grid-tile [colspan]="3" [rowspan]="1">
+        <input type="text" name="conferenceName" placeholder="Name of Conference being attended" ngModel="{{applicantInfo?.name}}" required disabled>
+      </md-grid-tile>
+
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        Supervisor
+      </md-grid-tile>
+      <md-grid-tile [colspan]="3" [rowspan]="1">
+        <input type="text" name="conferenceName" placeholder="Name of Conference being attended" ngModel="{{appInfo?.conferenceName}}" required disabled>
+      </md-grid-tile>
+
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+        Applicant
+      </md-grid-tile>
+      <md-grid-tile [colspan]="3" [rowspan]="1">
+        <input type="text" name="conferenceName" placeholder="Name of Conference being attended" ngModel="{{appInfo?.conferenceName}}" required disabled>
+      </md-grid-tile>
+
+    </md-grid-list>
+
+    <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'submit(formdata.value)'>
+
+      <md-grid-list cols="4" rowHeight="2em" gutterSize="10px" style="padding-bottom: 10px;">
+        <md-grid-tile [colspan]="4"><h2>Conference Information</h2></md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          Name of Conference
+        </md-grid-tile>
+        <md-grid-tile [colspan]="3" [rowspan]="1">
+          <input type="text" name="conferenceName" placeholder="Name of Conference being attended" ngModel="{{appInfo?.conferenceName}}" required disabled>
+        </md-grid-tile>
+
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          Conference Location
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          <input type="text" name="conferenceCity" placeholder="City" ngModel="City: {{appInfo?.conferenceCity}}" disabled>
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          <input type="text" name="conferenceProvince" placeholder="Province/State" ngModel="Province: {{appInfo?.conferenceProvince}}" disabled>
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          <input type="text" name="conferenceCountry" placeholder="Country" ngModel="Country: {{appInfo?.conferenceCountry}}" disabled>
+        </md-grid-tile>
+      </md-grid-list>
+
+      <md-grid-list cols="5" rowHeight="2em" gutterSize="10px">
+        <md-grid-tile>
+          Conference Duration
+        </md-grid-tile>
+
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          From
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1" >
+          <input type="text" name="conferenceStartDate" ngModel="{{appInfo?.conferenceStartDate}}" disabled>
+        </md-grid-tile>
+
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          To
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          <input type="text" name="conferenceEndDate" ngModel="{{appInfo?.conferenceEndDate}}" disabled>
+        </md-grid-tile>
+      </md-grid-list>
+
+      <!--  -->
+      <md-grid-list cols="4" rowHeight="2em" gutterSize="10px" style="padding-bottom: 40px">
+        <md-grid-tile [colspan]="4"></md-grid-tile>
+        <md-grid-tile [colspan]="4"><h2>Presentation Information</h2></md-grid-tile>
+        <md-grid-tile [colspan]="1">
+          Presentation Name
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1">
+          <input type="text" name="presentationName" placeholder="thunder thunder thundercats!" ngModel="{{appInfo?.presentationName}}" disabled>
+        </md-grid-tile>
+
+        <md-grid-tile [colspan]="1">
+          Presentation Type
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1">
+          <input type="radio" name="presentationType" value="oral" style="padding-right: 15px" ngModel="{{appInfo.presentationType}}" disabled>Oral
+          <input type="radio" name="presentationType" value="poster" ngModel="{{appInfo.presentationType}}" disabled>Poster
+        </md-grid-tile>
+
+        <md-grid-tile>
+          Main Author
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1">
+          <input type="text" name="presentationAuthor" placeholder="Ahmed Abdullah Hassan Mansor Ahmed Ali Ahmed Abdulaziz Ali Al Abdulmohsen" ngModel="{{appInfo?.presentationAuthor}}" disabled>
+        </md-grid-tile>
+        <!--<md-grid-tile [rowspan]="2"></md-grid-tile>-->
+        <md-grid-tile>Co-Authors</md-grid-tile>
+        <md-grid-tile [colspan]="1">
+          <input type="text" name="presentationCoauthors" placeholder="Jane Doe, John Smith, Bruce Lee" ngModel="{{appInfo?.presentationCoauthors}}" disabled>
+        </md-grid-tile>
+
+
+        <md-grid-tile [colspan]="4"></md-grid-tile>
+        <md-grid-tile [colspan]="4"><h2>Estimated Expense</h2></md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          Registration Fees
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          <input type="text" name="registrationFees" placeholder="0.00" ngModel="{{appInfo?.registrationFees}}" disabled>
+        </md-grid-tile>
+
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          Transportation Fees
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          <input type="text" name="transportationnFees" placeholder="0.00" ngModel="{{appInfo?.transportationnFees}}" disabled>
+        </md-grid-tile>
+
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          Accommodation Fees
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          <input type="text" name="accomodationFees" placeholder="0.00" ngModel="{{appInfo?.accomodationFees}}" disabled>
+        </md-grid-tile>
+
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          Food Expenses
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          <input type="text" name="foodFees" placeholder="0.00" ngModel="{{appInfo?.foodFees}}" disabled>
+        </md-grid-tile>
+      </md-grid-list>
+
+      <md-grid-list cols="4" rowHeight="2em" gutterSize="10px">
+        <md-grid-tile [colspan]="2">
+          <button type="button" style="background: red; width: 45%" (click)="reject()" *ngIf="!isRejected">Reject</button>
+        </md-grid-tile>
+
+        <md-grid-tile [colspan]="1" >
+          <button type="button" style="width: 90%" (click)="accept(formdata.value)" *ngIf="!isRejected">Accept</button>
+        </md-grid-tile>
+        <!--<md-grid-tile [colspan]="1" >-->
+          <!--<button type="submit" style="width: 90%"> Submit</button>-->
+        <!--</md-grid-tile>-->
+
+      </md-grid-list>
     </form>
+
+
+    <!-- make some space between the two forms -->
+    <md-grid-tile></md-grid-tile>
+
+
+    <!-- the rejection form -->
+    <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'returnApplication(formdata)' *ngIf="isRejected">
+
+      <div style="background: #f2f2f2; padding-top: 20px; padding-bottom: 20px;">
+
+        <div style="padding-left: 10%; padding-right:10%;  padding-top: 20px;">
+          <h1>Rejection Notes</h1>
+          <textarea  placeholder="What would you like the applicant to change?" style="width: 100%; height: 100px"></textarea>
+
+        <md-grid-list cols="4" rowHeight="2em" gutterSize="10px">
+          <md-grid-tile [colspan]="2">
+
+
+          </md-grid-tile>
+        </md-grid-list>
+        <!-- buttons -->
+      <md-grid-list cols="4" rowHeight="2em" gutterSize="10px">
+        <md-grid-tile [colspan]="2">
+          <button type="button" style="background: red; width: 45%" (click)="cancel()">Cancel</button>
+        </md-grid-tile>
+
+        <md-grid-tile [colspan]="2" >
+          <button type="submit" style="width: 70%">Return Application</button>
+        </md-grid-tile>
+      </md-grid-list>
+        </div>
+      </div>
+    </form>
+
   </div>
 </div>
+
