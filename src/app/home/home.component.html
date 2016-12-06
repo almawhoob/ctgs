@@ -4,3 +4,17 @@
 <button md-raised-button (click)="logout()">
   Logout
 </button>
+
+<!--<md-grid-list>-->
+<!--<md-grid-tile></md-grid-tile>-->
+<!--</md-grid-list>-->
+
+<ng-container *ngFor="let item of applicationList | async">
+<md-card style="background: white;">
+  <md-card-title-group>
+    <img md-card-sm-image src="path/to/img.png">
+    <md-card-title>{{item.applicationID}}</md-card-title>
+    <md-card-subtitle>Subtitle</md-card-subtitle>
+  </md-card-title-group>
+</md-card>
+</ng-container>
