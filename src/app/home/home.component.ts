@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
 
     this.applicationList = af.database.list('/applications');
     console.log("APPLICATION LIST: " + this.applicationList);
+
     this.af.auth.subscribe( auth =>{
         this.userObservable = this.af.database.object('user/' + auth.uid, {preserveSnapshot: true})
         console.log('Current User: ' + auth.uid);
@@ -56,7 +57,8 @@ export class HomeComponent implements OnInit {
 
   logout() {
     this.af.auth.logout();
-    this.router.navigate(['/login']);
+    // console.log("The current user is: " + this.af.auth.getAuth().uid);
+    this.router.navigateByUrl('/login');
   }
 
   routeToApply(){

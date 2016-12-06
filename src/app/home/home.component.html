@@ -12,7 +12,7 @@
 <ng-container *ngFor="let item of applicationList | async">
 <md-card style="background: white;" *ngIf="isSupervisor()">
   <md-card-title-group>
-    <img md-card-sm-image src="path/to/img.png">
+    <!--<img md-card-sm-image src="path/to/img.png">-->
     <md-card-title (click)="this.router.navigate(['/rec'])">{{item.applicationID}}</md-card-title>
     <md-card-subtitle>{{item.presentationName}}</md-card-subtitle>
   </md-card-title-group>

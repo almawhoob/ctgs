@@ -72,6 +72,8 @@ export class RecommendationComponent implements OnInit {
   /* accepts the application and sends a notification to the supervisor */
   accept() {
     console.log("Attempt to accept this application!");
+    const itemObservable = this.af.database.object('applications/'+this.appInfo.applicationID);
+    itemObservable.update({ state: 'accepted' });
   }
 
 

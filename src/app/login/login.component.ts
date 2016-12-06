@@ -9,25 +9,40 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent  {
   title = "CTGS";
-  constructor(private af: AngularFire, private router: Router) { }
-  loginErrorMessage ="";
+
+  constructor(private af: AngularFire, private router: Router) {
+
+  }
+  // loginErrorMessage ="";
+
+
+
   login(formData){
-    if(formData.valid) {
+    if (formData.valid) {
       console.log(formData.value);
+
       this.af.auth.login({
         email: formData.value.email,
         password: formData.value.password
-      }).then(
+      })
+
+        .then(
         (success) => {
-          console.log(success);
-          this.router.navigateByUrl('home');
-        }).catch(
-        (err) => {
-          this.loginErrorMessage = err.message;
-          console.log(err);
+          console.log("successful login: " + success);
+          this.router.navigate(['/home']);
         })
-    }else {
+
+        .catch(
+        (err) => {
+          // this.loginErrorMessage = err.message;
+          console.log("ERROR MESSAGE: " + err.message);
+        })
+
+    } else {
       console.log("Invalid Form Entry");
     }
+
   }
-}
+
+
+}//end of class
