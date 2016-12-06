@@ -10,7 +10,7 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./application-create.component.css']
 })
 export class ApplicationCreateComponent implements OnInit {
-  acceptedConditions = true;     //Switch to true for testing purposes,
+  acceptedConditions = false;     //Switch to true for testing purposes,
   title = 'Travel Grant Application';
   private db;
   private currentUID;
@@ -32,20 +32,17 @@ export class ApplicationCreateComponent implements OnInit {
 
 
 
-  save(formData: any) {
+  save(formValues: any) {
     console.log("Save clicked.");
     // var applicationKey = this.db.ref().child('applications').push().key;
-    if (!this.checkDates(formData['conferenceStartDate'], formData['conferenceEndDate']))
-      window.alert("End date is before the first date");
-    else {
-      this.af.database.list('applications').push(formData).then((application) => {
+
+      this.af.database.list('applications').push(formValues).then((application) => {
         this.af.database.object('applications/' + application.key).update({
           userID: this.currentUID,
           applicationID: application.key
         })
         console.log('Application pushed! ' + application.key)
       });
-    }
     // console.log(formData);
 
   }
@@ -70,11 +67,17 @@ export class ApplicationCreateComponent implements OnInit {
     console.log("Submit clicked.");
     formValues["state"] = 'pendingRecommendation';
 
-    this.af.database.list('applications').push(formValues).then( (application) => {
-      this.af.database.object('applications/' + application.key). update({userID: this.currentUID, applicationID: application.key})
-      console.log('Application pushed! ' + application.key)
-    });
-
+    if (!this.checkDates(formValues['conferenceStartDate'], formValues['conferenceEndDate']))
+      window.alert("End date is before the first date");
+    else {
+      this.af.database.list('applications').push(formValues).then((application) => {
+        this.af.database.object('applications/' + application.key).update({
+          userID: this.currentUID,
+          applicationID: application.key
+        });
+        console.log('Application pushed! ' + application.key)
+      });
+    }
   }
 
   cancel() {
