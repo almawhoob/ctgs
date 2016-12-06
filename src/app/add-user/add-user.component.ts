@@ -23,7 +23,6 @@ export class AddUserComponent {
   }
   signUp(formValues) {
     formValues.role= "requester";
-    delete formValues['password'];
     console.log(formValues);
     this.af.auth.createUser(formValues).then(
       (success) => {

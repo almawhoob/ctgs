@@ -13,7 +13,7 @@
         Applicant
       </md-grid-tile>
       <md-grid-tile [colspan]="3" [rowspan]="1">
-        <input type="text" name="conferenceName" placeholder="Name of Conference being attended" ngModel="{{applicantInfo?.name}}" required disabled>
+        <input type="text" name="conferenceName" ng-pattern="/^[a-zA-Z0-9]*$/" placeholder="Name of Conference being attended" ngModel="{{applicantInfo?.name}}" required disabled>
       </md-grid-tile>
 
       <md-grid-tile [colspan]="1" [rowspan]="1">

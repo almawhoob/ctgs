@@ -80,20 +80,21 @@
         Name of Conference
       </md-grid-tile>
       <md-grid-tile [colspan]="3" [rowspan]="1">
-        <input type="text" name="conferenceName" placeholder="Name of Conference being attended" ngModel required>
+        <input type="text" name="conferenceName" placeholder="Please enter only alphanumeric characters"
+               ngModel pattern="[a-zA-Z0-9 ]*" required>
       </md-grid-tile>
 
       <md-grid-tile [colspan]="1" [rowspan]="1">
         Conference Location
       </md-grid-tile>
       <md-grid-tile [colspan]="1" [rowspan]="1">
-        <input type="text" name="conferenceCity" placeholder="City" ngModel required>
+        <input type="text" name="conferenceCity" placeholder="City" ngModel pattern="[a-zA-Z ]*" required>
       </md-grid-tile>
       <md-grid-tile [colspan]="1" [rowspan]="1">
-        <input type="text" name="conferenceProvince" placeholder="Province/State" ngModel required>
+        <input type="text" name="conferenceProvince" placeholder="Province/State" pattern="[a-zA-Z ]*" ngModel required>
       </md-grid-tile>
       <md-grid-tile [colspan]="1" [rowspan]="1">
-        <input type="text" name="conferenceCountry" placeholder="Country" ngModel required>
+        <input type="text" name="conferenceCountry" placeholder="Country" pattern="[a-zA-Z ]*" ngModel required>
       </md-grid-tile>
     </md-grid-list>
 
@@ -125,7 +126,7 @@
         Presentation Name
       </md-grid-tile>
       <md-grid-tile [colspan]="1">
-        <input type="text" name="presentationName" placeholder="thunder thunder thundercats!" ngModel required>
+        <input type="text" name="presentationName" placeholder="thunder thunder thundercats!" ngModel pattern="[a-zA-Z0-9 ]*" required>
       </md-grid-tile>
 
       <md-grid-tile [colspan]="1">
@@ -140,12 +141,12 @@
         Main Author
       </md-grid-tile>
       <md-grid-tile [colspan]="1">
-        <input type="text" name="presentationAuthor" placeholder="Ahmed Abdullah Hassan Mansor Ahmed Ali Ahmed Abdulaziz Ali Al Abdulmohsen" ngModel required>
+        <input type="text" name="presentationAuthor" placeholder="Ali Al Abdulmohsen" ngModel pattern="[a-zA-Z ]*" required>
       </md-grid-tile>
       <!--<md-grid-tile [rowspan]="2"></md-grid-tile>-->
       <md-grid-tile>Co-Authors</md-grid-tile>
       <md-grid-tile [colspan]="1">
-        <input type="text" name="presentationCoauthors" placeholder="Jane Doe, John Smith, Bruce Lee" ngModel>
+        <input type="text" name="presentationCoauthors" placeholder="Jane Doe, John Smith, Bruce Lee" pattern="[a-zA-Z ,]*" ngModel>
       </md-grid-tile>
 
 
