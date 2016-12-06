@@ -13,6 +13,7 @@ import { AppRouting } from "./app.routing";
 import {LoginGuard} from "./login/login-guard.service";
 import { RecommendationComponent } from './recommendation/recommendation.component';
 import { ApplicationCreateComponent } from './application-create/application-create.component';
+import {AddUserComponent} from "./add-user/add-user.component";
 
 // Initialize Firebase
 var config = {
@@ -31,6 +32,7 @@ const authConfig = {
 @NgModule({
   declarations: [
     AppComponent,
+    AddUserComponent,
     HomeComponent,
     LoginComponent,
     RecommendationComponent,

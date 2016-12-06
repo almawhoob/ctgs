@@ -1,67 +1,26 @@
-<div class="add-user">
-    <h1>Create New User</h1>
-  <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'submit(formdata.value)'>
-
-    <md-grid-list cols="4" rowHeight="2em" gutterSize="10px" style="padding-bottom: 10px;">
-      <md-grid-tile [colspan]="4"><h2>User Information</h2></md-grid-tile>
-      <md-grid-tile [colspan]="1" [rowspan]="1">
-     User Information
-      </md-grid-tile>
-      <md-grid-tile [colspan]="1" [rowspan]="2">
-        <input type="text" name="surName" placeholder="Surname" ngModel required>
-      </md-grid-tile>
-      </md-grid-tile>
-      <md-grid-tile [colspan]="1" [rowspan]="2">
-        <input type="text" id="private" name="password" placeholder="Password" ngModel required>
-      </md-grid-tile>
-      <md-grid-tile [colspan]="1" [rowspan]="2">
-        <input type="text" name="givenName" placeholder="Given Name" ngModel required>
-      </md-grid-tile>
-      <md-grid-tile [colspan]="1" [rowspan]="2">
-        <input type="text" name="faculty/Number" placeholder="Faculty" ngModel required>
-      </md-grid-tile>
-    </md-grid-list>
-    <md-grid-list cols="4" rowHeight="2em" gutterSize="10px" style="padding-bottom: 10px;">
-      <md-grid-tile [colspan]="4"><h2>Requester Only</h2></md-grid-tile>
-
-
-      <md-grid-tile [colspan]="1" [rowspan]="4">
-        <input type="text" name="faculty/Number" placeholder="Faculty" ngModel required>
-      </md-grid-tile>
-      <md-grid-tile [colspan]="1" [rowspan]="5">
-        <input type="text" name="academicUnit" placeholder="Academic Unit" ngModel required>
-      </md-grid-tile>
-      <md-grid-tile [colspan]="1" [rowspan]="6">
-        <input type="text" name="programStudy" placeholder="Program of Study" ngModel required>
-      </md-grid-tile>
-      <md-grid-tile [colspan]="1" [rowspan]="7">
-        <input type="text" name="sessioNumber" placeholder="Session Number" ngModel required>
-      </md-grid-tile>
-      <md-grid-tile [colspan]="1" [rowspan]="8">
-        <input type="text" name="thesisTopic" placeholder="Thesis Topic" ngModel required>
-      </md-grid-tile>
-      <md-grid-tile [colspan]="1" [rowspan]="9">
-        <input type="text" name="supervisorID" placeholder="Supervisor iD" ngModel required>
-      </md-grid-tile>
-
-      <md-grid-list cols="4" rowHeight="2em" gutterSize="10px" style="padding-bottom: 10px;">
-        <md-grid-tile [colspan]="4"><h2>Supervisor Only</h2></md-grid-tile>
-
-      <md-grid-tile [colspan]="1" [rowspan]="11">
-        <input type="text" name="grantAcctNum" placeholder="Number of granted accounts" ngModel required>
-      </md-grid-tile>
-
-    </md-grid-list>
-
-
-  </form>
+<div class="add-user-page">
+  <div class="form">
+    <h1>{{title}}</h1>
+    <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'signUp(formdata.value)'>
+      <input type="text" placeholder="name" name="name" ngModel required>
+      <input type="email" placeholder="email" name="email" ngModel required>
+      <md-grid-list cols="3" rowHeight="2em" style="padding-bottom: 10px;">
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          Supervisor
+        </md-grid-tile>
+        <md-grid-tile [colspan]="2" [rowspan]="1">
+          <select name="supervisorID" ngModel>
+            <ng-container *ngFor="let item of queryList | async">
+              <option value="{{item.userID}}" *ngIf="item.role === 'Supervisor'">
+                {{ item['name'] | json }}
+              </option>
+            </ng-container>
+          </select>
+        </md-grid-tile>
+      </md-grid-list>
+      <input type="password" name="password" autocomplete="off" ngModel required>
+      <button type="submit" [disabled]="!formdata.valid">Submit</button>
+      <p style="font-size:12px; color:red;">{{loginErrorMessage}}</p>
+    </form>
+  </div>
 </div>
-<div>
-  <button type="button" (click)="createUser()">Create User</button>
-
-
-
-</div>
-
-
-
