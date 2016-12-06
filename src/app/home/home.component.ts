@@ -49,9 +49,18 @@ export class HomeComponent implements OnInit {
     return this.userProfile.role === 'Supervisor';
   }
 
+  isRequester(){
+    console.log(this.userProfile)
+    return this.userProfile.role === 'requester';
+  }
+
   logout() {
     this.af.auth.logout();
     this.router.navigate(['/login']);
+  }
+
+  routeToApply(){
+    this.router.navigate(['/apply']);
   }
 
 }
