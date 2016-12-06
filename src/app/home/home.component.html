@@ -1,16 +1,19 @@
 
-<button md-raised-button (click)="logout()">
+<button md-raised-button (click)="userService.logout()">
   Logout
 </button>
 
 <!--<md-grid-list>-->
 <!--<md-grid-tile></md-grid-tile>-->
 <!--</md-grid-list>-->
-<button md-raised-button (click)="routeToApply()" *ngIf="this.userProfile?.role === 'requester'">Create Application</button>
-<button md-raised-button (click)="this.router.navigate(['/add'])" *ngIf="this.userProfile?.role === 'Admin'">Create User</button>
+<h1 *ngIf="als.isAdmin()">Admin</h1>
+<h1 *ngIf="als.isSupervisor()">Supervisor</h1>
+<h1 *ngIf="als.isRequester()">Requester</h1>
+<button md-raised-button (click)="routeToApply()" *ngIf="userService.isRequester()">Create Application</button>
+<button md-raised-button (click)="this.router.navigate(['/add'])" *ngIf="userService.isAdmin()">Create User</button>
 
 <ng-container *ngFor="let item of applicationList | async">
-<md-card style="background: white;" *ngIf="isSupervisor()">
+<md-card style="background: white;" *ngIf="userService.isSupervisor()">
   <md-card-title-group>
     <!--<img md-card-sm-image src="path/to/img.png">-->
     <md-card-title (click)="this.router.navigate(['/rec'])">{{item.applicationID}}</md-card-title>

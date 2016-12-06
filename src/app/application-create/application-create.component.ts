@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 import {NgForm} from '@angular/forms';
+import {Router} from "@angular/router";
 // import * as firebase from 'firebase';
 
 
@@ -17,7 +18,7 @@ export class ApplicationCreateComponent implements OnInit {
   private userProfile: any;
   private userObservable: any;
 
-  constructor( private af: AngularFire ) {
+  constructor( private af: AngularFire, private router: Router) {
     // this.db = firebase.database();
     this.af.auth.subscribe( auth =>{
       this.currentUID = auth.uid;
@@ -49,7 +50,8 @@ export class ApplicationCreateComponent implements OnInit {
           userID: this.currentUID,
           applicationID: application.key
         })
-        console.log('Application pushed! ' + application.key)
+        console.log('Application pushed! ' + application.key);
+        alert("Your application has been saved!")
       });
     // console.log(formData);
 
@@ -86,7 +88,9 @@ export class ApplicationCreateComponent implements OnInit {
           applicationID: application.key,
           supervisorID: this.userProfile.supervisorID
         });
-        console.log('Application pushed! ' + application.key)
+        console.log('Application pushed! ' + application.key);
+        alert("Your application has been submitted!")
+        this.router.navigate(['/home'])
       });
     }
   }

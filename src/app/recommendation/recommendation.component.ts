@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFire} from "angularfire2";
 import {_appIdRandomProviderFactory} from "@angular/core/src/application_tokens";
-
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-recommendation',
@@ -21,13 +21,25 @@ export class RecommendationComponent implements OnInit {
   private isRejected: boolean = false;
   private rejectionNotes: any;
 
-  constructor(private af: AngularFire) {
+  private application: any;
 
+
+  constructor(private af: AngularFire, private userService: UserService) {
+
+  // this.application = applicationListService.getApplicationById('-KY6XVItrJQju-jeVHjA');
+  // console.log("APPLICATION: " + this.application);
+
+    // this.application.subscribe(snapshot => {
+    //   this.application = snapshot.val();
+    // });
+
+
+    this.currentUID = userService.getUserId();
     // get browsing-user id
-    this.af.auth.subscribe( auth =>{
-      this.currentUID = auth.uid;
-      console.log(auth.uid);
-    });
+    // this.af.auth.subscribe( auth =>{
+    //   this.currentUID = auth.uid;
+    //   console.log(auth.uid);
+    // });
 
     // get application
     this.appId = '-KY6XVItrJQju-jeVHjA';

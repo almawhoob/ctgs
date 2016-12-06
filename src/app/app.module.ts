@@ -14,6 +14,8 @@ import {LoginGuard} from "./login/login-guard.service";
 import { RecommendationComponent } from './recommendation/recommendation.component';
 import { ApplicationCreateComponent } from './application-create/application-create.component';
 import {AddUserComponent} from "./add-user/add-user.component";
+import {UserService} from "./user.service";
+
 
 // Initialize Firebase
 var config = {
@@ -47,7 +49,7 @@ const authConfig = {
     MaterialModule.forRoot(),
     AngularFireModule.initializeApp(config, authConfig)
   ],
-  providers: [LoginGuard],
+  providers: [LoginGuard, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
