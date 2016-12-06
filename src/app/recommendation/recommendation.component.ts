@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFire} from "angularfire2";
+import {_appIdRandomProviderFactory} from "@angular/core/src/application_tokens";
 
 
 @Component({
@@ -18,6 +19,7 @@ export class RecommendationComponent implements OnInit {
   private appId: any;
   private appInfo: any;
   private isRejected: boolean = false;
+  private rejectionNotes: any;
 
   constructor(private af: AngularFire) {
 
@@ -35,6 +37,7 @@ export class RecommendationComponent implements OnInit {
     this.appInfo = af.database.object('/applications/'+this.appId, { preserveSnapshot: true });
     this.appInfo.subscribe(snapshot => {
       this.appInfo = snapshot.val();
+      this.rejectionNotes = snapshot.val().rejectionNotes;
       console.log(snapshot.key);
       console.log(snapshot.val());
 
@@ -42,7 +45,7 @@ export class RecommendationComponent implements OnInit {
       this.appRef.subscribe(snapshot => {
         this.applicantInfo = snapshot.val();
         console.log("APPLICANT KEY: " + snapshot.key);
-        console.log("APPLICANT INFO: " + snapshot.val().name);
+        console.log("APPLICANT NAME: " + snapshot.val().name);
       });
     });
 
@@ -81,9 +84,13 @@ export class RecommendationComponent implements OnInit {
   returnApplication(formValues: any) {
   console.log("Attempt to return this applicatoin to the applicant!");
     // formValues["state"] = 'rejectedRecommendation';
+  console.log("rejectionNotes: " + formValues['rejectionNotes']);
 
     const itemObservable = this.af.database.object('applications/'+this.appInfo.applicationID);
-    itemObservable.update({ state: 'rejected' });
+    itemObservable.update({
+      state: 'rejected',
+      rejectionNotes: formValues['rejectionNotes']
+    });
 
 
     // this.af.database.list('applications/'+this.applicantInfo.applicationID).update({

@@ -13,21 +13,21 @@
         Applicant
       </md-grid-tile>
       <md-grid-tile [colspan]="3" [rowspan]="1">
-        <input type="text" name="conferenceName" ng-pattern="/^[a-zA-Z0-9]*$/" placeholder="Name of Conference being attended" ngModel="{{applicantInfo?.name}}" required disabled>
+        <input type="text" name="applicanName" placeholder="Name of Applicant" ngModel="{{applicantInfo?.name}}" required disabled>
       </md-grid-tile>
 
       <md-grid-tile [colspan]="1" [rowspan]="1">
         Supervisor
       </md-grid-tile>
       <md-grid-tile [colspan]="3" [rowspan]="1">
-        <input type="text" name="conferenceName" placeholder="Name of Conference being attended" ngModel="{{appInfo?.conferenceName}}" required disabled>
+        <input type="text" name="conferenceName" placeholder="Name of Applicant's Supervisor" ngModel="{{appInfo?.conferenceName}}" required disabled>
       </md-grid-tile>
 
       <md-grid-tile [colspan]="1" [rowspan]="1">
-        Applicant
+        Application Status
       </md-grid-tile>
       <md-grid-tile [colspan]="3" [rowspan]="1">
-        <input type="text" name="conferenceName" placeholder="Name of Conference being attended" ngModel="{{appInfo?.conferenceName}}" required disabled>
+        <input type="text" name="conferenceName" placeholder="Application Status" ngModel="{{appInfo?.state}}" required disabled>
       </md-grid-tile>
 
     </md-grid-list>
@@ -161,13 +161,13 @@
 
 
     <!-- the rejection form -->
-    <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'returnApplication(formdata)' *ngIf="isRejected">
+    <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'returnApplication(formdata.value)' *ngIf="isRejected">
 
       <div style="background: #f2f2f2; padding-top: 20px; padding-bottom: 20px;">
 
         <div style="padding-left: 10%; padding-right:10%;  padding-top: 20px;">
           <h1>Rejection Notes</h1>
-          <textarea  placeholder="What would you like the applicant to change?" style="width: 100%; height: 100px"></textarea>
+          <textarea  name="rejectionNotes" placeholder="What would you like the applicant to change?" style="width: 100%; height: 100px" [(ngModel)]="rejectionNotes"></textarea>
 
         <md-grid-list cols="4" rowHeight="2em" gutterSize="10px">
           <md-grid-tile [colspan]="2">
