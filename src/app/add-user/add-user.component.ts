@@ -28,6 +28,7 @@ export class AddUserComponent {
     this.af.auth.createUser(formValues).then(
       (success) => {
         console.log(success);
+        delete formValues.password;
         this.af.database.object('user/'+this.currentUID).set(
           formValues).then((user) => {
           this.af.database.object('user/' + this.currentUID).update({

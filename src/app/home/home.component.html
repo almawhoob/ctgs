@@ -6,7 +6,9 @@
 <!--<md-grid-list>-->
 <!--<md-grid-tile></md-grid-tile>-->
 <!--</md-grid-list>-->
-<button (click)="routeToApply()" *ngIf="this.userProfile?.role === 'requester'">Create Application</button>
+<button md-raised-button (click)="routeToApply()" *ngIf="this.userProfile?.role === 'requester'">Create Application</button>
+<button md-raised-button (click)="this.router.navigate(['/add'])" *ngIf="this.userProfile?.role === 'Admin'">Create User</button>
+
 <ng-container *ngFor="let item of applicationList | async">
 <md-card style="background: white;" *ngIf="isSupervisor()">
   <md-card-title-group>
