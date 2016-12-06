@@ -10,11 +10,22 @@ import {Router} from "@angular/router";
 export class HomeComponent implements OnInit {
 
   private applicationList: any;
-
+  private userObservable: any;
+  private userProfile: any;
   constructor(private af: AngularFire, private router:Router) {
 
     this.applicationList = af.database.list('/applications');
     console.log("APPLICATION LIST: " + this.applicationList);
+    this.af.auth.subscribe( auth =>{
+        this.userObservable = this.af.database.object('user/' + auth.uid, {preserveSnapshot: true})
+        console.log('Current User: ' + auth.uid);
+        var test = this.userObservable.subscribe( snapshot => {
+          this.userProfile = snapshot.val();
+        }
+        );
+
+      }
+    )
 
     // this.applicationList.subscribe(snapshot => {
     //   this.applicationList = snapshot.val();
@@ -34,9 +45,14 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  isSupervisor() {
+    return this.userProfile.role === 'Supervisor';
+  }
+
   logout() {
     this.af.auth.logout();
     this.router.navigate(['/login']);
   }
 
 }
+;

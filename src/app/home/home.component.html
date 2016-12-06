@@ -10,7 +10,7 @@
 <!--</md-grid-list>-->
 
 <ng-container *ngFor="let item of applicationList | async">
-<md-card style="background: white;">
+<md-card style="background: white;" *ngIf="isSupervisor()">
   <md-card-title-group>
     <img md-card-sm-image src="path/to/img.png">
     <md-card-title>{{item.applicationID}}</md-card-title>

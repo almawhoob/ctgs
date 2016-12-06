@@ -14,13 +14,21 @@ export class ApplicationCreateComponent implements OnInit {
   title = 'Travel Grant Application';
   private db;
   private currentUID;
+  private userProfile: any;
+  private userObservable: any;
 
   constructor( private af: AngularFire ) {
     // this.db = firebase.database();
     this.af.auth.subscribe( auth =>{
       this.currentUID = auth.uid;
       console.log(auth.uid);
+      this.userObservable = this.af.database.object('user/' + auth.uid, {preserveSnapshot: true})
+      this.userObservable.subscribe( snapshot => {
+          this.userProfile = snapshot.val();
+        }
+      );
     })
+
   }
 
   ngOnInit() {
@@ -50,13 +58,15 @@ export class ApplicationCreateComponent implements OnInit {
   checkDates(startDate, endDate) {
     let sd = startDate.split('-');
     let ed = endDate.split('-');
+    console.log('start: ' + sd);
+    console.log('end: '+ ed);
     if(Number(sd[0]) > Number (ed[0])) {
       return false;
     }
-    if(Number(sd[1]) > Number (ed[1])) {
+    else if(Number(sd[1]) > Number (ed[1])) {
       return false;
     }
-    if(Number(sd[2]) > Number (ed[2])) {
+    else if(Number(sd[2]) > Number (ed[2])) {
       return false;
     }
     return true;
@@ -73,7 +83,8 @@ export class ApplicationCreateComponent implements OnInit {
       this.af.database.list('applications').push(formValues).then((application) => {
         this.af.database.object('applications/' + application.key).update({
           userID: this.currentUID,
-          applicationID: application.key
+          applicationID: application.key,
+          supervisorID: this.userProfile.supervisorID
         });
         console.log('Application pushed! ' + application.key)
       });
