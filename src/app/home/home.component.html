@@ -6,9 +6,9 @@
 <!--<md-grid-list>-->
 <!--<md-grid-tile></md-grid-tile>-->
 <!--</md-grid-list>-->
-<h1 *ngIf="als.isAdmin()">Admin</h1>
-<h1 *ngIf="als.isSupervisor()">Supervisor</h1>
-<h1 *ngIf="als.isRequester()">Requester</h1>
+<h1 *ngIf="userService.isAdmin()">Admin</h1>
+<h1 *ngIf="userService.isSupervisor()">Supervisor</h1>
+<h1 *ngIf="userService.isRequester()">Requester</h1>
 <button md-raised-button (click)="routeToApply()" *ngIf="userService.isRequester()">Create Application</button>
 <button md-raised-button (click)="this.router.navigate(['/add'])" *ngIf="userService.isAdmin()">Create User</button>
 
