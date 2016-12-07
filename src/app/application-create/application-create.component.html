@@ -1,11 +1,8 @@
 <ul class="topnav">
-  <li *ngIf="userService.isRequester()">
-    <a (click)="this.router.navigate(['/home'])">Home</a>
+  <li>
+    <button (click)="this.router.navigate(['/home'])">Home</button>
   </li>
-  <li *ngIf="userService.isRequester()">
-    <a (click)="this.router.navigate(['/apply'])">Create Application</a>
-  </li>
-  <li class="right"> <a  (click)="userService.logout()">Log Out</a></li>
+  <li class="right"> <button  (click)="userService.logout()">Log Out</button></li>
 </ul>
 <div class="apply-page">
   <div class="form" *ngIf="!acceptedConditions">

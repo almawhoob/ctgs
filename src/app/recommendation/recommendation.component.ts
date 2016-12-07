@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFire} from "angularfire2";
 import {_appIdRandomProviderFactory} from "@angular/core/src/application_tokens";
 import {UserService} from "../user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-recommendation',
@@ -24,7 +25,7 @@ export class RecommendationComponent implements OnInit {
   private application: any;
 
 
-  constructor(private af: AngularFire, private userService: UserService) {
+  constructor(private af: AngularFire, private userService: UserService, private router: Router) {
 
   // this.application = applicationListService.getApplicationById('-KY6XVItrJQju-jeVHjA');
   // console.log("APPLICATION: " + this.application);

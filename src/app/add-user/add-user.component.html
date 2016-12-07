@@ -1,10 +1,8 @@
 <ul class="topnav">
-  <li *ngIf="userService.isAdmin()">
-    <a (click)="this.router.navigate(['/home'])">Home</a>
+  <li>
+    <button (click)="this.router.navigate(['/home'])">Home</button>
   </li>
-  <li *ngIf="userService.isAdmin()">
-    <a (click)="this.router.navigate(['/add'])">Add User</a>
-  </li>
+  <li class="right"> <button  (click)="userService.logout()">Log Out</button></li>
 </ul>
 <div class="add-user-page">
   <div class="form">

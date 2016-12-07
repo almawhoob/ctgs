@@ -1,17 +1,14 @@
 <ul class="topnav">
   <li>
-    <a (click)="this.router.navigate(['/home'])">Home</a>
+    <button (click)="this.router.navigate(['/home'])">Home</button>
   </li>
   <li *ngIf="userService.isAdmin()">
-    <a (click)="this.router.navigate(['/add'])">Add User</a>
-  </li>
-  <li *ngIf="userService.isSupervisor()">
-    <a (click)="this.router.navigate(['/rec'])">Recommend Application</a>
+    <button (click)="this.router.navigate(['/add'])">Add User</button>
   </li>
   <li *ngIf="userService.isRequester()">
-    <a (click)="this.router.navigate(['/apply'])">Create Application</a>
+    <button (click)="this.router.navigate(['/apply'])">Create Application</button>
   </li>
-  <li class="right"> <a  (click)="userService.logout()">Log Out</a></li>
+  <li class="right"> <button  (click)="userService.logout()">Log Out</button></li>
 </ul>
 
 <ng-container *ngFor="let item of applicationList | async">

@@ -1,5 +1,7 @@
 import {Component, OnInit, Injectable} from '@angular/core';
 import {AngularFire, FirebaseAuth, FirebaseAppConfig, FirebaseAuthState, AngularFireAuth} from "angularfire2";
+import {UserService} from "../user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-user',
@@ -14,7 +16,8 @@ export class AddUserComponent {
   private currentUID;
   private queryList;
 
-  constructor(private af: AngularFire, private auth: FirebaseAuth) {
+  constructor(private af: AngularFire, private auth: FirebaseAuth,
+              private userService: UserService, private router: Router) {
     this.af.auth.subscribe( auth =>{
       this.currentUID = auth.uid;
       console.log(auth.uid);
