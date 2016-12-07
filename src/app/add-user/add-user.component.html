@@ -1,3 +1,11 @@
+<ul class="topnav">
+  <li *ngIf="userService.isAdmin()">
+    <a (click)="this.router.navigate(['/home'])">Home</a>
+  </li>
+  <li *ngIf="userService.isAdmin()">
+    <a (click)="this.router.navigate(['/add'])">Add User</a>
+  </li>
+</ul>
 <div class="add-user-page">
   <div class="form">
     <h1>{{title}}</h1>
