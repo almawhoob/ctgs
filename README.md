@@ -46,3 +46,10 @@ Run `ng github-pages:deploy` to deploy to Github Pages.
 ## Further help
 
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Noteable issues
+The following scenario leads to being stuck in the login page
+<Login> -> <Logout> -> <Login>
+After the last scenario execution, the system does not execute the routing navigation due to an issue modules performing the same operation asynchronously through the User Services. 
+
+However, after the second execution of <Login>, users can still access the main page by accessing address https://localhost:4200/home
