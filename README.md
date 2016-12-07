@@ -2,16 +2,16 @@
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21.
 ## Content
-- [Requirements](#Requirements)
-- [Setting up to run project](#Setting-up-to-run-project)
-- [Development server](#Development-server)
-- [Code scaffolding](#Code-scaffolding)
-- [Build](#Build)
-- [Running unit tests](#Running-unit-tests)
-- [Running end-to-end tests](#Running-end-to-end-tests)
-- [Deploying to Github Pages](#Deploying-to-Github-Pages)
-- [Further help](#Further-help)
-- [Noteable issues](#Noteable-issues)
+- [Requirements](#requirements)
+- [Setting up to run project](#setting-up-to-run-project)
+- [Development server](#development-server)
+- [Code scaffolding](#code-scaffolding)
+- [Build](#build)
+- [Running unit tests](#running-unit-tests)
+- [Running end-to-end tests](#running-end-to-end-tests)
+- [Deploying to Github Pages](#deploying-to-github-pages)
+- [Further help](#further-help)
+- [Noteable issues](#noteable-issues)
 
 ## Requirements
 
