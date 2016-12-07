@@ -60,7 +60,7 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
 
 ## Noteable issues
 The following scenario leads to being stuck in the login page
-<Login> -> <Logout> -> <Login>
+Login -> Logout -> Login
 After the last scenario execution, the system does not execute the routing navigation due to an issue modules performing the same operation asynchronously through the User Services. 
 
-However, after the second execution of <Login>, users can still access the main page by accessing address https://localhost:4200/home
+However, after the second execution of Login, users can still access the main page by accessing address https://localhost:4200/home
