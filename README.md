@@ -1,6 +1,17 @@
 # ReadMe
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21.
+## Content
+- [Requirements](## Requirements)
+- [Setting up to run project](## Setting up to run project)
+- [Development server](## Development server)
+- [Code scaffolding](## Code scaffolding)
+- [Build](## Build)
+- [Running unit tests](## Running unit tests)
+- [Running end-to-end tests](## Running end-to-end tests)
+- [Deploying to Github Pages](## Deploying to Github Pages)
+- [Further help](## Further help)
+- [Noteable issues](## Noteable issues)
 
 ## Requirements
 
