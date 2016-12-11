@@ -24,6 +24,9 @@ export class AddUserComponent {
     })
     this.queryList = af.database.list('/user');
   }
+
+
+  /* Creates a requester account */
   signUp(formValues) {
     formValues.role= "requester";
     console.log(formValues);
@@ -43,4 +46,27 @@ export class AddUserComponent {
         console.log(err);
       });
   }
-}
+
+  /* Creates a supervisor account */
+  signUpSupervisor(formValues) {
+    formValues.role= "Supervisor";
+    console.log(formValues);
+    this.af.auth.createUser(formValues).then(
+      (success) => {
+        console.log(success);
+        delete formValues.password;
+        this.af.database.object('user/'+this.currentUID).set(
+          formValues).then((user) => {
+          this.af.database.object('user/' + this.currentUID).update({
+            userID: this.currentUID,
+          });
+          console.log('User added! ' + this.currentUID)
+        });
+      }).catch(
+      (err) => {
+        console.log(err);
+      });
+  }
+
+
+}//end of class
