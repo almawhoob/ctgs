@@ -1,6 +1,9 @@
 <ul class="topnav">
   <li>
-    <button (click)="this.router.navigate(['/home'])">Home</button>
+    <a [routerLink]="['/home']">Home</a>
+  </li>
+  <li *ngIf="userService.isRequester()">
+    <a [routerLink]="['/apply']">Create Application</a>
   </li>
   <li class="right"> <button  (click)="userService.logout()">Log Out</button></li>
 </ul>

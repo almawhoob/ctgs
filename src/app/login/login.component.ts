@@ -13,7 +13,7 @@ export class LoginComponent  {
   constructor(private af: AngularFire, private router: Router) {
 
   }
-  // loginErrorMessage ="";
+  loginErrorMessage ="";
 
 
 
@@ -28,14 +28,13 @@ export class LoginComponent  {
 
         .then(
         (success) => {
-          alert("Login Succesful");
           console.log("successful login: " + success);
           this.router.navigate(['/home']);
         })
 
         .catch(
         (err) => {
-          // this.loginErrorMessage = err.message;
+          this.loginErrorMessage = err.message;
           console.log("ERROR MESSAGE: " + err.message);
         })
 
