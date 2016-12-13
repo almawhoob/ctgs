@@ -11,15 +11,15 @@ import {Router} from "@angular/router";
 
 @Injectable()
 export class AddUserComponent {
-  private db: any;
-  private title = "Add USer"
   private currentUID;
   private queryList;
+  private requesterForm = false;
+  private supervisorForm = false;
 
   constructor(private af: AngularFire, private auth: FirebaseAuth,
               private userService: UserService, private router: Router) {
     this.af.auth.subscribe( auth =>{
-      this.currentUID = auth.uid;
+      this.currentUID = userService.getUserId();
       console.log(auth.uid);
     })
     this.queryList = af.database.list('/user');
@@ -30,42 +30,24 @@ export class AddUserComponent {
   signUp(formValues) {
     formValues.role= "requester";
     console.log(formValues);
-    this.af.auth.createUser(formValues).then(
-      (success) => {
-        console.log(success);
-        delete formValues.password;
-        this.af.database.object('user/'+this.currentUID).set(
-          formValues).then((user) => {
-          this.af.database.object('user/' + this.currentUID).update({
-            userID: this.currentUID,
-          });
-          console.log('User added! ' + this.currentUID)
-        });
-      }).catch(
-      (err) => {
-        console.log(err);
-      });
+    this.userService.createUser(formValues);
   }
 
   /* Creates a supervisor account */
   signUpSupervisor(formValues) {
     formValues.role= "Supervisor";
     console.log(formValues);
-    this.af.auth.createUser(formValues).then(
-      (success) => {
-        console.log(success);
-        delete formValues.password;
-        this.af.database.object('user/'+this.currentUID).set(
-          formValues).then((user) => {
-          this.af.database.object('user/' + this.currentUID).update({
-            userID: this.currentUID,
-          });
-          console.log('User added! ' + this.currentUID)
-        });
-      }).catch(
-      (err) => {
-        console.log(err);
-      });
+    this.userService.createUser(formValues);
+  }
+
+  displayRequesterForm(){
+    this.supervisorForm = false;
+    this.requesterForm = true;
+  }
+
+  displaySupervisorForm(){
+    this.requesterForm = false;
+    this.supervisorForm = true;
   }
 
 

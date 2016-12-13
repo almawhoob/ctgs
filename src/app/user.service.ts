@@ -14,8 +14,7 @@ export class UserService {
 
   constructor(private af: AngularFire, private router:Router) {
     this.userSubscription = this.af.auth.subscribe( auth =>{
-        this.userObservable = this.af.database.object('user/' + auth.uid, {preserveSnapshot: true})
-        console.log('Current User: ' + auth.uid);
+        this.userObservable = this.af.database.object('user/' + auth.uid, {preserveSnapshot: true});
         this.userId = auth.uid;
         this.dbSubscription = this.userObservable.subscribe( snapshot => {
             this.userProfile = snapshot.val();
@@ -28,6 +27,24 @@ export class UserService {
 
   getUserId(){
     return this.userId;
+  }
+
+  createUser(formValues:any){
+    this.af.auth.createUser(formValues).then(
+      (success) => {
+        console.log(success);
+        delete formValues.password;
+        this.af.database.object('user/'+this.userId).set(
+          formValues).then((user) => {
+          this.af.database.object('user/' + this.userId).update({
+            userID: this.userId,
+          });
+          console.log('User added! ' + this.userId)
+        });
+      }).catch(
+      (err) => {
+        console.log(err);
+      });
   }
 
   isSupervisor() {
@@ -43,10 +60,9 @@ export class UserService {
   }
 
   logout() {
-    this.dbSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
+    this.dbSubscription.unsubscribe();
     this.af.auth.logout();
-    // console.log("The current user is: " + this.af.auth.getAuth().uid);
     this.router.navigateByUrl('/login');
   }
 

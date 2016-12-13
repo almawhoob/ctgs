@@ -10,36 +10,37 @@
 <div class="add-user-page">
   <div class="form">
 
-    <md-tab-group>
+    <!--<md-tab-group>-->
       <!-- Adding a student account -->
-      <md-tab label="Student">
-        <h2>Create a student account</h2>
-        <!--<h1>{{title}}</h1>-->
-        <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'signUp(formdata.value)'>
-          <input type="text" placeholder="name" name="name" ngModel required>
-          <input type="email" placeholder="email" name="email" ngModel required>
-          <md-grid-list cols="3" rowHeight="2em" style="padding-bottom: 10px;">
-            <md-grid-tile [colspan]="1" [rowspan]="1">
-              Supervisor
-            </md-grid-tile>
-            <md-grid-tile [colspan]="2" [rowspan]="1">
-              <select name="supervisorID" ngModel>
-                <ng-container *ngFor="let item of queryList | async">
-                  <option value="{{item.userID}}" *ngIf="item.role === 'Supervisor'">
-                    {{ item['name'] | json }}
-                  </option>
-                </ng-container>
-              </select>
-            </md-grid-tile>
-          </md-grid-list>
-          <input type="password" name="password" autocomplete="off" placeholder="password" ngModel required>
-          <button type="submit" [disabled]="!formdata.valid">Create a student account</button>
-          <p style="font-size:12px; color:red;">{{loginErrorMessage}}</p>
-        </form>
-      </md-tab>
-
-      <!-- Adding a supervisor account -->
-      <md-tab label="Supervisor">
+      <!--<md-tab label="Student">-->
+    <button type="button" (click)="displayRequesterForm()">Requester</button>
+    <button style="margin-top: 10px " type="button" (click)="displaySupervisorForm()">Supervisor</button>
+    <div *ngIf="requesterForm">
+      <h2>Create a student account</h2>
+      <!--<h1>{{title}}</h1>-->
+      <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'signUp(formdata.value)'>
+      <input type="text" placeholder="name" name="name" ngModel required>
+      <input type="email" placeholder="email" name="email" ngModel required>
+      <md-grid-list cols="3" rowHeight="2em" style="padding-bottom: 10px;">
+      <md-grid-tile [colspan]="1" [rowspan]="1">
+      Supervisor
+      </md-grid-tile>
+      <md-grid-tile [colspan]="2" [rowspan]="1">
+      <select name="supervisorID" ngModel>
+      <ng-container *ngFor="let item of queryList | async">
+      <option value="{{item.userID}}" *ngIf="item.role === 'Supervisor'">
+      {{ item['name'] | json }}
+      </option>
+      </ng-container>
+      </select>
+      </md-grid-tile>
+      </md-grid-list>
+      <input type="password" name="password" autocomplete="off" placeholder="password" ngModel required>
+      <button type="submit" >Create a Requester account</button>
+      <p style="font-size:12px; color:red;">{{loginErrorMessage}}</p>
+      </form>
+    </div>
+    <div *ngIf="supervisorForm">
         <h2>Create a supervisor account</h2>
         <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'signUpSupervisor(formdata.value)'>
           <input type="text" placeholder="name" name="name" ngModel required>
@@ -48,9 +49,7 @@
           <button type="submit" [disabled]="!formdata.valid">Create a supervisor account</button>
           <p style="font-size:12px; color:red;">{{loginErrorMessage}}</p>
         </form>
-      </md-tab>
-
-    </md-tab-group>
+    </div>
 
 
 
@@ -61,5 +60,6 @@
 
 
 
-  </div>
+
+</div>
 </div>
