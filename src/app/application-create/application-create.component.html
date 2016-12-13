@@ -2,10 +2,10 @@
   <li>
     <a [routerLink]="['/home']">Home</a>
   </li>
-  <li *ngIf="userService.isRequester()">
+  <li>
     <a [routerLink]="['/apply']">Create Application</a>
   </li>
-  <li class="right"> <button  (click)="userService.logout()">Log Out</button></li>
+  <li class="right"> <a  (click)="userService.logout()">Log Out</a></li>
 </ul>
 <div class="apply-page">
   <div class="form" *ngIf="!acceptedConditions">

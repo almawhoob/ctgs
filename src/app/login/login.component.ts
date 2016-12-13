@@ -29,6 +29,7 @@ export class LoginComponent  {
         .then(
         (success) => {
           console.log("successful login: " + success);
+          alert("Login Successful");
           this.router.navigate(['/home']);
         })
 
