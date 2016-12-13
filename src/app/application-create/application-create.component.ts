@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import { AngularFire } from 'angularfire2';
 import {NgForm} from '@angular/forms';
 import {Router} from "@angular/router";
+import {UserService} from "../user.service";
 // import * as firebase from 'firebase';
 
 
@@ -10,7 +11,7 @@ import {Router} from "@angular/router";
   templateUrl: './application-create.component.html',
   styleUrls: ['./application-create.component.css']
 })
-export class ApplicationCreateComponent implements OnInit {
+export class ApplicationCreateComponent  {
   acceptedConditions = false;     //Switch to true for testing purposes,
   title = 'Travel Grant Application';
   private db;
@@ -18,9 +19,8 @@ export class ApplicationCreateComponent implements OnInit {
   private userProfile: any;
   private userObservable: any;
 
-  constructor( private af: AngularFire, private router: Router) {
-    // this.db = firebase.database();
-    this.af.auth.subscribe( auth =>{
+  constructor( private af: AngularFire, private router: Router, private userService: UserService) {
+     this.db = this.af.auth.subscribe( auth =>{
       this.currentUID = auth.uid;
       console.log(auth.uid);
       this.userObservable = this.af.database.object('user/' + auth.uid, {preserveSnapshot: true})
@@ -32,8 +32,7 @@ export class ApplicationCreateComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-  }
+
 
   acceptTheConditions() {
     this.acceptedConditions = !this.acceptedConditions;
