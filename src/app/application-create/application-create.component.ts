@@ -3,6 +3,7 @@ import { AngularFire } from 'angularfire2';
 import {NgForm} from '@angular/forms';
 import {Router} from "@angular/router";
 import {UserService} from "../user.service";
+import {ApplicationService} from "../application.service";
 // import * as firebase from 'firebase';
 
 
@@ -14,27 +15,22 @@ import {UserService} from "../user.service";
 export class ApplicationCreateComponent  {
   acceptedConditions = false;     //Switch to true for testing purposes,
   title = 'Travel Grant Application';
-  private db;
   private currentUID;
-  private userProfile: any;
-  private userObservable: any;
+  private userValues: any;
+  private applications: any;
 
-  constructor( private af: AngularFire, private router: Router, private userService: UserService) {
-     this.db = this.af.auth.subscribe( auth =>{
-      this.currentUID = auth.uid;
-      console.log(auth.uid);
-      this.userObservable = this.af.database.object('user/' + auth.uid, {preserveSnapshot: true})
-      this.userObservable.subscribe( snapshot => {
-          this.userProfile = snapshot.val();
-        }
-      );
-    })
-
+  constructor( private applicationService: ApplicationService,
+               private router: Router,
+               private userService: UserService) {
+     this.applications = applicationService.getApplications();
+     this.userValues = userService.getUserValues();
+     this.currentUID = userService.getUserId();
   }
 
 
 
   acceptTheConditions() {
+    console.log(this.userValues);
     this.acceptedConditions = !this.acceptedConditions;
   }
 
@@ -42,17 +38,14 @@ export class ApplicationCreateComponent  {
 
   save(formValues: any) {
     console.log("Save clicked.");
-    // var applicationKey = this.db.ref().child('applications').push().key;
-
-      this.af.database.list('applications').push(formValues).then((application) => {
-        this.af.database.object('applications/' + application.key).update({
+      this.applications.push(formValues).then((application) => {
+        this.applicationService.getApplication(application.key).update({
           userID: this.currentUID,
           applicationID: application.key
         })
         console.log('Application pushed! ' + application.key);
         alert("Your application has been saved!")
       });
-    // console.log(formData);
 
   }
 
@@ -81,11 +74,11 @@ export class ApplicationCreateComponent  {
     if (!this.checkDates(formValues['conferenceStartDate'], formValues['conferenceEndDate']))
       window.alert("End date is before the first date");
     else {
-      this.af.database.list('applications').push(formValues).then((application) => {
-        this.af.database.object('applications/' + application.key).update({
+      this.applications.push(formValues).then((application) => {
+        this.applicationService.getApplication(application.key).update({
           userID: this.currentUID,
           applicationID: application.key,
-          supervisorID: this.userProfile.supervisorID
+          supervisorID: this.userValues.supervisorID
         });
         console.log('Application pushed! ' + application.key);
         alert("Your application has been submitted!")

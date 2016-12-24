@@ -13,4 +13,9 @@ export class ApplicationService {
     this.applications = this.database.list('/applications');
     return this.applications;
   }
+
+  getApplication(id){
+    return this.database.object('applications/' + id);
+  }
+
 }

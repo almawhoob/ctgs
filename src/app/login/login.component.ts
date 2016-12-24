@@ -36,7 +36,7 @@ export class LoginComponent  {
         .catch(
         (err) => {
           this.loginErrorMessage = err.message;
-          console.log("ERROR MESSAGE: " + err.message);
+          console.log("ERROR MESSAGE: " + this.loginErrorMessage);
         })
 
     } else {

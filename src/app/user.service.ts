@@ -8,9 +8,8 @@ export class UserService {
 
   private userId;
   private userObservable;
-  private userProfile;
+  private userValues;
   private userRole: any = '';
-  private userSubscription;
   private dbSubscription;
   private database;
 
@@ -18,14 +17,11 @@ export class UserService {
               private af: AngularFire,
               private router:Router) {
     this.database = db.getDatabase();
-    this.userSubscription = this.af.auth.subscribe( auth =>{
-        this.userId = auth.uid;
-      }
-    );
+    this.userId = db.getUserId();
     this.userObservable = this.database.object('user/' + this.userId, {preserveSnapshot: true});
     this.dbSubscription = this.userObservable.subscribe( snapshot => {
-        this.userProfile = snapshot.val();
-        this.userRole = this.userProfile.role;
+        this.userValues = snapshot.val();
+        this.userRole = this.userValues.role;
       }
     );
   }
@@ -64,9 +60,13 @@ export class UserService {
     return this.userRole === 'Admin';
   }
 
+  getUserValues(){
+    return this.userValues;
+  }
+
   logout() {
-    this.userSubscription.unsubscribe();
     this.dbSubscription.unsubscribe();
+    this.db.unsubscribe();
     this.af.auth.logout();
     this.router.navigateByUrl('/login');
   }
