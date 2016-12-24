@@ -15,6 +15,8 @@ import { RecommendationComponent } from './recommendation/recommendation.compone
 import { ApplicationCreateComponent } from './application-create/application-create.component';
 import {AddUserComponent} from "./add-user/add-user.component";
 import {UserService} from "./user.service";
+import {ApplicationService} from "./application.service";
+import {DatabaseService} from "./database.service";
 
 
 // Initialize Firebase
@@ -49,7 +51,7 @@ const authConfig = {
     MaterialModule.forRoot(),
     AngularFireModule.initializeApp(config, authConfig)
   ],
-  providers: [LoginGuard, UserService],
+  providers: [LoginGuard, UserService, ApplicationService, DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

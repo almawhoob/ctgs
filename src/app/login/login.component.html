@@ -4,8 +4,8 @@
     <form class="login-form" #formdata = 'ngForm' (ngSubmit) = 'login(formdata)'>
       <input type="email" placeholder="email" name="email" (ngModel)="email" required>
       <input type="password" placeholder="password" name="password" autocomplete="off" (ngModel)="password" required>
-      <button type="submit" [disabled]="!formdata.valid">Submit</button>
       <p style="font-size:12px; color:red;">{{loginErrorMessage}}</p>
+      <button type="submit" [disabled]="!formdata.valid">Submit</button>
     </form>
   </div>
 </div>
